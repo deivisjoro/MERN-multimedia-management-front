@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import axios from '../axiosConfig';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { login } from '../redux/actions/userActions';
 
 const Login = () => {
   const { t } = useTranslation();
@@ -10,31 +12,21 @@ const Login = () => {
   const [message, setMessage] = useState('');
   const [messageType, setMessageType] = useState(''); // 'success' or 'error'
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/auth/login', {
-        email,
-        password
-      });
-      setMessage(response.data.message || 'Login successful!');
+      await dispatch(login(email, password));
+      setMessage('Login successful!');
       setMessageType('success');
-
-      // Guardar el token y el tipo de usuario en el local storage
-      localStorage.setItem('token', response.data.token);
-      localStorage.setItem('userType', response.data.userType);
 
       // Redirigir a la página principal después de unos segundos
       setTimeout(() => {
         navigate('/');
       }, 2000);
     } catch (error) {
-      if (error.response && error.response.data && error.response.data.message) {
-        setMessage(error.response.data.message);
-      } else {
-        setMessage('Login failed! Please try again.');
-      }
+      setMessage('Login failed! Please try again.');
       setMessageType('error');
     }
   };

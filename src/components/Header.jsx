@@ -1,18 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useNavigate } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { logout } from '../redux/actions/userActions'; // Asegúrate de importar la acción de logout
 
-const Header = () => {
+const Header = ({ userType, logout }) => {
   const { t, i18n } = useTranslation();
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [adminDropdownOpen, setAdminDropdownOpen] = useState(false);
-  const [userType, setUserType] = useState(null);
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const userTypeFromStorage = localStorage.getItem('userType');
-    setUserType(userTypeFromStorage);
-  }, []);
 
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
@@ -28,8 +24,7 @@ const Header = () => {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem('token');
-    localStorage.removeItem('userType');
+    logout();
     navigate('/login');
   };
 
@@ -101,4 +96,8 @@ const Header = () => {
   );
 };
 
-export default Header;
+const mapStateToProps = (state) => ({
+  userType: state.auth.userType,
+});
+
+export default connect(mapStateToProps, { logout })(Header);
