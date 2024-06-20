@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* src/index.css */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  header {
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  aside {
+    border-right: 1px solid #ddd;
+  }
+  
+  main {
+    margin-left: 16rem; /* 64px * 4 */
+    margin-top: 4rem; /* 64px */
+  }
+  

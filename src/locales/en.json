@@ -1,0 +1,16 @@
+{
+  "welcome": "Welcome to the Multimedia Management System",
+  "login": "Login",
+  "signup": "Sign Up",
+  "email": "Email",
+  "password": "Password",
+  "change_language": "Change Language",
+  "home_description": "This system allows you to manage multimedia content efficiently.",
+  "search": "Search...",
+  "videos": "Videos",
+  "videos_description": "Here you can manage and view all videos.",
+  "images": "Images",
+  "images_description": "Here you can manage and view all images.",
+  "documents": "Documents",
+  "documents_description": "Here you can manage and view all documents."
+}

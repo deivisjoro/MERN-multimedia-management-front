@@ -1,0 +1,16 @@
+{
+  "welcome": "Bienvenido al Sistema de Gestión Multimedia",
+  "login": "Iniciar Sesión",
+  "signup": "Registrarse",
+  "email": "Correo Electrónico",
+  "password": "Contraseña",
+  "change_language": "Cambiar Idioma",
+  "home_description": "Este sistema te permite gestionar contenido multimedia de manera eficiente.",
+  "search": "Buscar...",
+  "videos": "Videos",
+  "videos_description": "Aquí puedes gestionar y ver todos los videos.",
+  "images": "Imágenes",
+  "images_description": "Aquí puedes gestionar y ver todas las imágenes.",
+  "documents": "Documentos",
+  "documents_description": "Aquí puedes gestionar y ver todos los documentos."
+}
