@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link, useNavigate } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { logout } from '../redux/actions/userActions'; // Asegúrate de importar la acción de logout
+import { logout } from '../redux/actions/userActions';
 
 const Header = ({ userType, logout }) => {
   const { t, i18n } = useTranslation();
@@ -10,9 +10,12 @@ const Header = ({ userType, logout }) => {
   const [adminDropdownOpen, setAdminDropdownOpen] = useState(false);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    // Esto se ejecutará cada vez que userType cambie
+  }, [userType]);
+
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
-    setDropdownOpen(false);
   };
 
   const toggleDropdown = () => {
@@ -72,23 +75,11 @@ const Header = ({ userType, logout }) => {
           )}
           <div className="relative inline-block text-left">
             <button 
-              onClick={toggleDropdown} 
+              onClick={() => changeLanguage(i18n.language === 'en' ? 'es' : 'en')} 
               className="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50"
             >
               {i18n.language === 'en' ? 'English' : 'Español'}
             </button>
-            {dropdownOpen && (
-              <div className="origin-top-right absolute right-0 mt-2 w-32 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
-                <div className="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
-                  <button onClick={() => changeLanguage('en')} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                    English
-                  </button>
-                  <button onClick={() => changeLanguage('es')} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                    Español
-                  </button>
-                </div>
-              </div>
-            )}
           </div>
         </div>
       </div>

@@ -3,8 +3,8 @@ import { LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT } from '../actions/types';
 const initialState = {
   token: localStorage.getItem('token'),
   userType: localStorage.getItem('userType'),
-  isAuthenticated: null,
-  loading: true,
+  isAuthenticated: !!localStorage.getItem('token'),
+  loading: false,
   user: null,
 };
 

@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import axios from '../axiosConfig';
-import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { login } from '../redux/actions/userActions';
 
 const Login = () => {
@@ -10,7 +9,7 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
-  const [messageType, setMessageType] = useState(''); // 'success' or 'error'
+  const [messageType, setMessageType] = useState('');
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -21,7 +20,6 @@ const Login = () => {
       setMessage('Login successful!');
       setMessageType('success');
 
-      // Redirigir a la página principal después de unos segundos
       setTimeout(() => {
         navigate('/');
       }, 2000);

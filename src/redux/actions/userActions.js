@@ -1,7 +1,6 @@
 import axios from '../../axiosConfig';
 import { LOGIN_SUCCESS, LOGIN_FAIL, LOGOUT } from './types';
 
-// Acción para iniciar sesión
 export const login = (email, password) => async (dispatch) => {
   try {
     const res = await axios.post('/auth/login', { email, password });
@@ -20,7 +19,6 @@ export const login = (email, password) => async (dispatch) => {
   }
 };
 
-// Acción para cerrar sesión
 export const logout = () => (dispatch) => {
   localStorage.removeItem('token');
   localStorage.removeItem('userType');
